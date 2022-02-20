@@ -9,10 +9,15 @@
         <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+         <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        
         <style>
+        
         #map {
+            
             width: 900px;
-            height: 460px;
+            height: 380px;
         }
         </style>
         <style>
@@ -23,37 +28,73 @@
                 color: white;
                 font-size: 2em;
             }
-            #sidebar{
+            #sidebar1{
+                grid-area: sidebar1;
+                grid-column: 1;
+                grid-row: 2/4;
+                grid-template-columns: subgrid;
+                grid-template-columns: subgrid;
+                top: 40px;
+                bottom: 5px;
+                width: 400px;
                 padding: 5px; /* adds inner padding */
                 background: #333; /* background color */
                 color: white;
+                border: 1px solid gray; /* border width, style, and color */
                 padding-top: 5px;
                 padding-right: 30px;
                 padding-bottom: 10px;
                 padding-left: 10px;
+             
             }
-    
+            #sidebar2{
+              
+                top: 40px;
+                bottom: 200px;
+                width: 400px;
+                padding: 5px; /* adds inner padding */
+                background: #333; /* background color */
+                color: white;
+                border: 1px solid gray; /* border width, style, and color */
+                padding-top: 5px;
+                padding-right: 30px;
+                padding-bottom: 10px;
+                padding-left: 10px;
+             
+            }
+
+            .sidebar-item {
+                padding: 1px; /* adds inner padding */
+                background: rgb(240, 237, 237); /* background color */
+                color: rgb(34, 33, 33);
+                font-size: 12;
+                border: 1px solid gray; /* border width, style, and color */
+                margin: 5px; /* outer padding */
+            }
+
             #map{
                 grid-area: map;
             }
             body {
                 display: grid;
-                grid-template-rows: 80px 1fr 50px;
+                grid-template-rows: 40px 1fr 50px;
                 grid-template-columns: 440px 1fr;
                 grid-template-areas: 
                 "header header"
-                "sidebar map"
+                "sidebar1 map"
+                "sidebar2 map"
                 "footer footer";
             }
     
             #footer{
-                grid-area: footer;
+                
+               
                
                 background-color: #333;
                 color: white;
-                padding-top: 10px;
+                padding-top: 1px;
                 padding-right: 30px;
-                padding-bottom: 40px;
+                padding-bottom: 1px;
                 padding-left: 600px;
             }
             
@@ -65,14 +106,26 @@
     <body>
 
         <div class="header", id="header">
-            AED All Ireland Locator
+             All Ireland AED Locator
         </div>
 
-        <div class="sidebar", id="sidebar">
-            My Sidebar
+        <div class="sidebar1", id="sidebar1", 
+            style = "width: 430px; height: 370px; 
+            line-height: 2em; overflow:scroll; 
+            border: thin #000 solid; padding: 5px;">
+            <B>Number of AEDs by County</B>
+            
+            
         </div>
+        <div class="sidebar2", id="sidebar2", 
+        style = "width: 430px; height: 160px; 
+        line-height: 2em; overflow:scroll; 
+        border: thin #000 solid; padding: 5px;">
+        <B>Number of AEDs by Province</B>
+    </div>
 
-
+     
+        
         <div id="map">
         </div>
 
@@ -6963,7 +7016,56 @@
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
+
         setBounds();
         </script>
+
+<script>
+            let data = [
+            json_Antrim_AEDs_59,
+            json_Armagh_AEDs_58,
+            json_Carlow_AEDs_57, 
+            json_Clare_AEDs_56,
+            json_Cork_AEDs_55,
+            json_Derry_AEDs_54,
+            json_Donegal_AEDs_53,
+            json_Down_AEDs_52,
+            json_Dublin_AEDs_51,
+            json_Fermanagh_AEDs_50,
+            json_Galway_AEDs_49,
+            json_Kerry_AEDs_48,
+            json_Kildare_AEDs_47,
+            json_Laois_AEDs_46,
+            json_Limerick_AEDs_45,
+            json_Longford_AEDs_44,
+            json_Mayo_AEDs_43,
+            json_Meath_AEDs_42,
+            json_Monaghan_AEDs_41,
+            json_Offaly_AEDs_40,
+            json_Sligo_AEDs_39,
+            json_Tipperary_AEDs_38,
+            json_Tyrone_AEDs_37,
+            json_Wicklow_AEDs_36
+                      
+            ]
+
+
+
+            
+// loop through data
+data.forEach(function(item){
+	// add marker to map
+	//var marker = L.marker([item.lat,item.lon])
+    //.bindPopup(item.title)
+
+    //myMarkers.addLayer(marker);
+    // add data to sidebar
+    $('.sidebar1').append('<div class="sidebar-item">'+item.name.substr(0,item.name.indexOf("_"))+' has '+item.features.length+'</div>')
+   
+
+})
+</script>
+
+
     </body>
 </html>
