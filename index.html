@@ -12,7 +12,8 @@
         
         <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        
+       <!-- Chart.js --> 
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script>
         
         <style>
         #map {
@@ -59,7 +60,7 @@
                         border: 1px solid gray; /* border width, style, and color */
                         padding-top: 5px;
                         padding-right: 30px;
-                        padding-bottom: 10px;
+                        padding-bottom: 1px;
                         padding-left: 10px;
                      
                     }
@@ -93,10 +94,10 @@
                        
                         background-color: #333;
                         color: white;
-                        padding-top: 1px;
+                        padding-top: 0px;
                         padding-right: 30px;
                         padding-bottom: 1px;
-                        padding-left: 600px;
+                        padding-left: 20px;
                     }
                     
                 </style>
@@ -116,7 +117,7 @@
    </div>
 
         <div class="sidebar2", id="sidebar2", 
-        style = "width: 430px; height: 160px; 
+        style = "width: 430px; height: 165px; 
         line-height: 2em; overflow:scroll; 
         border: thin #000 solid; padding: 5px;">
         <B>Number of AEDs by Province</B>
@@ -127,7 +128,8 @@
         </div>
 
         <div class="footer", id="footer">
-            My Footer
+            <B>Distribution of AEDs by County</B>
+            <canvas id="myChart" style="width:100%;max-width:800px, height:100%;max-height:160px"></canvas>
         </div>
 
         <script src="js/qgis2web_expressions.js"></script>
@@ -8071,8 +8073,8 @@
             ]
 
 
-
-
+            let names = []
+            let aeds = []
             
 // loop through data
 data1.forEach(function(item){
@@ -8084,9 +8086,34 @@ data1.forEach(function(item){
     // add data to sidebar
     $('.sidebar1').append('<div class="sidebar-item">'+item.name.substr(0,item.name.indexOf("_"))+' has '+item.features.length+'</div>')
    
-
+    //Add data to list for my bar chart
+        names.push(item.name.substr(0,item.name.indexOf("_")))
+        aeds.push(item.features.length)
 })
+
+    var xVals = names;
+    var yVals = aeds;
+    var barColors = "blue";
+    var myChart = new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xVals,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yVals
+             }] ,
+        options: {
+            legend: {display: true},
+        title: {
+            display: true,
+                text: "AED distribution by County for Ireland"
+        }
+        }}
+        
+});
+
 </script>
+<script>Chart.defaults.global.defaultFontColor = "#fff" </script>
 
 <script>
     let data2 = [
