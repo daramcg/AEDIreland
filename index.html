@@ -190,7 +190,7 @@
         <script src="data/Kildare_AEDs_36.js"></script>
         <script src="data/Connaught_AEDs_37.js"></script>
         <script src="data/Munster_AEDs_38.js"></script>
-        <script src="data/Leinster_AEDs_39.js"></script>
+        <script src="data/Leinster_AEDs_35.js"></script>
         <script src="data/Ulster_AEDs_40.js"></script>
         <script src="data/Wicklow_AEDs_41.js"></script>
         <script src="data/Tyrone_AEDs_42.js"></script>
@@ -3330,7 +3330,7 @@
             },
         });
         bounds_group.addLayer(layer_Munster_AEDs_38);
-        function pop_Leinster_AEDs_39(feature, layer) {
+        function pop_Leinster_AEDs_35(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -3474,9 +3474,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Leinster_AEDs_39_0() {
+        function style_Leinster_AEDs_35_0() {
             return {
-                pane: 'pane_Leinster_AEDs_39',
+                pane: 'pane_Leinster_AEDs_35',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -3490,25 +3490,25 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_Leinster_AEDs_39');
-        map.getPane('pane_Leinster_AEDs_39').style.zIndex = 439;
-        map.getPane('pane_Leinster_AEDs_39').style['mix-blend-mode'] = 'normal';
-        var layer_Leinster_AEDs_39 = new L.geoJson(json_Leinster_AEDs_39, {
+        map.createPane('pane_Leinster_AEDs_35');
+        map.getPane('pane_Leinster_AEDs_35').style.zIndex = 439;
+        map.getPane('pane_Leinster_AEDs_35').style['mix-blend-mode'] = 'normal';
+        var layer_Leinster_AEDs_35 = new L.geoJson(json_Leinster_AEDs_35, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Leinster_AEDs_39',
-            layerName: 'layer_Leinster_AEDs_39',
-            pane: 'pane_Leinster_AEDs_39',
-            onEachFeature: pop_Leinster_AEDs_39,
+            dataVar: 'json_Leinster_AEDs_35',
+            layerName: 'layer_Leinster_AEDs_35',
+            pane: 'pane_Leinster_AEDs_35',
+            onEachFeature: pop_Leinster_AEDs_35,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Leinster_AEDs_39_0(feature));
+                return L.circleMarker(latlng, style_Leinster_AEDs_35_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Leinster_AEDs_39);
+        bounds_group.addLayer(layer_Leinster_AEDs_35);
         function pop_Ulster_AEDs_40(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -8196,7 +8196,7 @@ var xVals = names;
 <script>
     let data2 = [
         json_Connaught_AEDs_37,
-        json_Leinster_AEDs_39,
+        json_Leinster_AEDs_35,
         json_Munster_AEDs_38,
         json_Ulster_AEDs_40   
     ]
