@@ -7,9 +7,9 @@ var styleJSON = {
         "intensity": 0.2
     },
     "sources": {
-        "OSMStandard_0": {
+        "ESRITopo_0": {
             "type": "raster",
-            "tiles": ["http://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+            "tiles": ["http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"],
             "tileSize": 256
         },
         "All_Irl_Counties_1": {
@@ -224,9 +224,9 @@ var styleJSON = {
             }
         },
         {
-            "id": "lyr_OSMStandard_0_0",
+            "id": "lyr_ESRITopo_0_0",
             "type": "raster",
-            "source": "OSMStandard_0"
+            "source": "ESRITopo_0"
         },
         {
             "id": "lyr_All_Irl_Counties_1_0",
