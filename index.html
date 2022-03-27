@@ -178,7 +178,6 @@
 <!-- Chart.js --> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script>
 
-
 <script>
 var map = new mapboxgl.Map({
  container: 'map',
@@ -330,14 +329,13 @@ map.on('mouseleave', 'lyr_Offaly_AEDs_33_0', function () {
                       
             ]
 
-
             let names = []
             let aeds = []
             
 // loop through data
 data1.forEach(function(item){
-	// add marker to map
-	//var marker = L.marker([item.lat,item.lon])
+    // add marker to map
+    //var marker = L.marker([item.lat,item.lon])
     //.bindPopup(item.title)
 
     //myMarkers.addLayer(marker);
@@ -390,7 +388,6 @@ data2.forEach(function(item){
 $('.sidebar2').append('<div class="sidebar-item">'+item.name.substr(0,item.name.indexOf("_"))+' has '+item.features.length+'</div>')
 })
 </script>
-
 
     </body>
 </html>

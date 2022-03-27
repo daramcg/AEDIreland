@@ -7,9 +7,9 @@ var styleJSON = {
         "intensity": 0.2
     },
     "sources": {
-        "ESRITopo_0": {
+        "GoogleRoad_0": {
             "type": "raster",
-            "tiles": ["http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"],
+            "tiles": ["https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"],
             "tileSize": 256
         },
         "All_Irl_Counties_1": {
@@ -224,9 +224,9 @@ var styleJSON = {
             }
         },
         {
-            "id": "lyr_ESRITopo_0_0",
+            "id": "lyr_GoogleRoad_0_0",
             "type": "raster",
-            "source": "ESRITopo_0"
+            "source": "GoogleRoad_0"
         },
         {
             "id": "lyr_All_Irl_Counties_1_0",
