@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="mapbox/mapbox-gl-generic-geocoder.css">
         <style>
         #map {
-            width: 600px;
+            width: 900px;
             height: 380px;
         }
         </style>
@@ -57,25 +57,6 @@
                         padding-left: 10px;
                      
                     }
-                #sidebar3{
-                grid-area: sidebar3;
-                grid-column: 3/3;
-                grid-row: 2/4;
-                grid-template-columns: subgrid;
-                grid-template-columns: subgrid;
-                top: 40px;
-                
-                width: 400px;
-               
-                background: #333; /* background color */
-                color: white;
-                border: 1px solid gray; /* border width, style, and color */
-                padding-top: 5px;
-                padding-right: 30px;
-                
-                padding-left: 10px;
-             
-            }
         
                     .sidebar-item {
                         padding: 1px; /* adds inner padding */
@@ -94,27 +75,23 @@
                         grid-template-rows: 40px 1fr 50px;
                         grid-template-columns: 440px 1fr;
                         grid-template-areas: 
-                        "header header header"
-                        "sidebar1 map map"
-                        "sidebar2 map map"
-                        "footer footer footer2";
+                        "header header"
+                        "sidebar1 map"
+                        "sidebar2 map"
+                        "footer footer";
                     }
             
                     #footer{
-                        width: 550px;
+                        
+                       
+                       
                         background-color: #333;
                         color: white;
                         padding-top: 0px;
                         padding-right: 30px;
                         padding-bottom: 1px;
                         padding-left: 20px;
-                        position: relative;
-                    }   
-                    
-                    #footer2{
-                        background-color: #333;
-                        color: white;
-                    }
+                    }            
         </style>
 
         <title></title>
@@ -143,26 +120,10 @@
             <nav id="menu"></nav>
               <div id="distance" class="distance-container"></div>
         </div>
-
-        <div class="sidebar3", id="sidebar3", 
-        style = "width: 300px; height: 360px; 
-        line-height: 2em; 
-        border: thin #000 solid; padding: 5px;">
-        <B>Distribution of AEDs by Province</B>
-        <canvas id="myChart2" style="width:100%; max-width:300px,
-             height:100%; max-height:160px"></canvas>
-        
-    </div>
-
         <div class="footer", id="footer">
             <B> Distribution of AEDs by County</B>
-            <canvas id="myChart" style="width:100%; max-width:600px,
+            <canvas id="myChart" style="width:100%; max-width:800px,
              height:100%; max-height:160px"></canvas>
-         </div>
-
-         <div class="footer2", id="footer2">
-            <B> Testing Me</B>
-            
          </div>
 
         <script src="js/qgis2web_expressions.js"></script>
@@ -414,8 +375,7 @@ data1.forEach(function(item){
         json_Munster_AEDs_9,
         json_Ulster_AEDs_7   
     ]
-            let names2 = []
-            let aeds2 = []
+    
 // loop through data
 data2.forEach(function(item){
 // add marker to map
@@ -425,38 +385,7 @@ data2.forEach(function(item){
 //myMarkers.addLayer(marker);
 // add data to sidebar
 $('.sidebar2').append('<div class="sidebar-item">'+item.name.substr(0,item.name.indexOf("_"))+' has '+item.features.length+'</div>')
-
-
- //Add data to list for my pie chart
- names2.push(item.name.substr(0,item.name.indexOf("_")))
-        aeds2.push(item.features.length)
-
-
-    var xVals = names2;
-    var yVals = aeds2;
-    var barColors = [
-            "#1e7145",
-            "#00aba9",
-            "#b91d47",
-            "#ffffff"
-        ];
-    var myChart = new Chart("myChart2", {
-        type: "pie",
-        data: {
-            labels: xVals,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yVals
-             }] ,
-        options: {
-            legend: {display: true},
-        title: {
-            display: true,
-                text: "PIECHART"
-        }
-        }}
-    })
-    })
+})
 </script>
 
     </body>
